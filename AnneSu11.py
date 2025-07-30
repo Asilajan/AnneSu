@@ -13,8 +13,8 @@ class SudokuCell(tk.Entry):
 
 class AnneSu11(tk.Tk):
     PUZZLES = [
-        "53..7....6..195....98....6.8...6...34..8..6.7...2...6.6....28....419..5....8..79",
-        "..3.2.6..9..3.5..1..18.64..81.29..7....8....4..17.69..98.47..8..1.5..9..4.2.3.."
+        "53..7....6..195....98....6.8...6...34..8..6.7...2...6.6....28....419..5....8..79.",
+        "..3.2.6..9..3.5..1..18.64..81.29..7....8....4..17.69..98.47..8..1.5..9..4.2.3...."
     ]
 
     def __init__(self):
@@ -56,9 +56,10 @@ class AnneSu11(tk.Tk):
 
     def new_game(self):
         puzzle = random.choice(self.PUZZLES)
+        puzzle = puzzle[:81].ljust(81, '.')
         for i, row in enumerate(self.cells):
             for j, cell in enumerate(row):
-                val = puzzle[i*9 + j]
+                val = puzzle[i * 9 + j]
                 if val == '.':
                     cell.delete(0, tk.END)
                     cell.config(state='normal', fg='black')
